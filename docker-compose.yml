@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  python-watchtower-test:
+    image: victorcmoura/python-watchtower-deployable
+    environment:
+      - PYTHONUNBUFFERED=1
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --interval 10
+  #   labels:
+  #     - "com.centurylinklabs.watchtower.enable=false"
