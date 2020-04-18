@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  python-watchtower-test:
+    image: victorcmoura/python-watchtower-deployable
+    environment:
+      - PYTHONUNBUFFERED=1
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: victorcmoura/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --debug --http-api
+    environment:
+      - WATCHTOWER_HTTP_API_TOKEN=lk123g
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    ports:
+      - 8080:8080
